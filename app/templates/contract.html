@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading checklist-heading">
+  <div><p class="eyebrow">CONTRACT WORKSPACE</p><h1>계약 실행 체크리스트</h1><p>‘봤다’가 아니라 무엇을, 언제, 어디서 확인했는지 남기세요. 비회원은 이 기기에, 로그인 사용자는 연결된 계정 저장소에 보관됩니다.</p></div>
+  <div class="progress-orb"><strong id="progress-value">0%</strong><span>전체 완료</span></div>
+</section>
+
+<section class="checklist-toolbar panel">
+  <div><strong id="progress-label">0 / 16 확인</strong><div class="master-progress"><span id="master-progress-bar"></span></div></div>
+  <div class="toolbar-actions"><button type="button" class="secondary-button" id="print-checklist">인쇄·PDF 저장</button><button type="button" class="ghost-button" id="reset-checklist">내 기록 초기화</button></div>
+</section>
+
+<section id="checklist-account" class="checklist-account panel" aria-live="polite">
+  <div><span class="account-dot"></span><div><strong>저장 상태 확인 중</strong><p>잠시만 기다려주세요.</p></div></div>
+  <a class="secondary-button" href="/login">로그인</a>
+</section>
+
+<section class="contract-layout">
+  <nav class="stage-nav" aria-label="계약 단계">
+    <button class="active" data-target="before"><span>01</span><b>계약 전</b><small>가격·권리·당사자</small></button>
+    <button data-target="sign"><span>02</span><b>계약할 때</b><small>특약·송금·설명</small></button>
+    <button data-target="balance"><span>03</span><b>잔금일</b><small>당일 변동 잠금</small></button>
+    <button data-target="after"><span>04</span><b>입주 후</b><small>대항력·보증 완료</small></button>
+  </nav>
+
+  <div class="stage-content">
+    <section id="before" class="check-stage active">
+      <div class="stage-title"><span>01</span><div><h2>계약 전 검증</h2><p>구두 설명이 아니라 최신 공식자료를 직접 확인합니다.</p></div></div>
+      <div class="check-items">
+        <article class="check-item" data-key="price"><input type="checkbox" id="ck-price"><label for="ck-price"><b>최근 실거래로 매매가·전세가를 대조했다</b><span>같은 건물 또는 유사 면적의 최근 매매 2건 이상을 확인</span></label><a href="https://rt.molit.go.kr/pt/gis/gis.do" target="_blank" rel="noopener">국토부 실거래가 ↗</a><input class="evidence-date" type="date" aria-label="실거래 확인일"></article>
+        <article class="check-item" data-key="building"><input type="checkbox" id="ck-building"><label for="ck-building"><b>건축물대장과 실제 집이 일치한다</b><span>위반 표시·주용도·동/호수·불법 증축 여부 확인</span></label><a href="https://www.gov.kr/mw/AA020InfoCappView.do?CappBizCD=15000000098&tp_seq=03" target="_blank" rel="noopener">정부24 ↗</a><input class="evidence-date" type="date" aria-label="건축물대장 확인일"></article>
+        <article class="check-item critical" data-key="registry"><input type="checkbox" id="ck-registry"><label for="ck-registry"><b>등기부 갑구·을구를 직접 확인했다</b><span>소유자, 압류·가압류, 신탁, 근저당 채권최고액 확인</span></label><a href="https://www.iros.go.kr/" target="_blank" rel="noopener">인터넷등기소 ↗</a><input class="evidence-date" type="date" aria-label="등기 확인일"></article>
+        <article class="check-item critical" data-key="senior"><input type="checkbox" id="ck-senior"><label for="ck-senior"><b>선순위 임차보증금 총액을 서면 확인했다</b><span>다가구는 세대별 구분등기가 없어 등기부만으로 확인되지 않습니다. 임대인 동의를 받아 주민센터에서 확정일자 부여현황을 열람하세요</span></label><span class="manual-badge">확정일자 부여현황 열람</span><input class="evidence-date" type="date" aria-label="선순위 확인일"></article>
+        <article class="check-item" data-key="owner"><input type="checkbox" id="ck-owner"><label for="ck-owner"><b>소유자와 계약 상대방, 입금 계좌 명의가 일치한다</b><span>대리계약이면 위임장·인감증명서와 소유자 본인 확인</span></label><span class="manual-badge">신분·권한 대조</span><input class="evidence-date" type="date" aria-label="소유자 확인일"></article>
+        <article class="check-item" data-key="broker"><input type="checkbox" id="ck-broker"><label for="ck-broker"><b>중개사무소와 중개인의 등록 상태를 확인했다</b><span>등록번호·상호·소재지가 사무소 게시 서류와 같은지, 응대한 사람이 개업공인중개사인지 중개보조원인지 대조</span></label><a href="http://www.nsdi.go.kr/lxportal/?menuno=2679" target="_blank" rel="noopener">국가공간정보포털 중개업 조회 ↗</a><input class="evidence-date" type="date" aria-label="중개사 확인일"></article>
+        <article class="check-item" data-key="tax"><input type="checkbox" id="ck-tax"><label for="ck-tax"><b>임대인의 미납 국세·지방세를 확인했다</b><span>계약 전에는 임대인 동의가 필요하고, 계약 후 임차개시일까지는 보증금 1천만원 초과 시 동의 없이 전국 세무서에서 열람 가능</span></label><a href="https://www.nts.go.kr/" target="_blank" rel="noopener">국세청 ↗</a><input class="evidence-date" type="date" aria-label="체납 확인일"></article>
+        <article class="check-item critical" data-key="guarantee"><input type="checkbox" id="ck-guarantee"><label for="ck-guarantee"><b>반환보증 가입 가능 여부와 한도를 사전 확인했다</b><span>가능할 것이라는 말이 아니라 기관의 실제 조건으로 확인</span></label><a href="https://www.khug.or.kr/jeonse/index.jsp" target="_blank" rel="noopener">안심전세포털 ↗</a><input class="evidence-date" type="date" aria-label="보증 확인일"></article>
+      </div>
+    </section>
+
+    <section id="sign" class="check-stage">
+      <div class="stage-title"><span>02</span><div><h2>계약 체결</h2><p>조건과 책임을 말이 아닌 계약서에 남깁니다.</p></div></div>
+      <div class="check-items">
+        <article class="check-item" data-key="explain"><input type="checkbox" id="ck-explain"><label for="ck-explain"><b>중개대상물 확인·설명서를 받고 대조했다</b><span>권리관계, 시설, 위반사항 설명과 실제 서류가 같은지 확인</span></label><span class="manual-badge">서류 보관</span><input class="evidence-date" type="date" aria-label="설명서 확인일"></article>
+        <article class="check-item critical" data-key="clause"><input type="checkbox" id="ck-clause"><label for="ck-clause"><b>권리변동·보증·근저당 특약을 계약서에 넣었다</b><span>진단 결과의 특약 초안을 상황에 맞게 검토해 반영</span></label><a href="/analysis">특약 초안 만들기 →</a><input class="evidence-date" type="date" aria-label="특약 확인일"></article>
+        <article class="check-item" data-key="payment"><input type="checkbox" id="ck-payment"><label for="ck-payment"><b>계약금은 확인된 명의 계좌로 송금하고 증빙을 보관했다</b><span>현금 지급을 피하고 계약서·송금내역을 함께 보관</span></label><span class="manual-badge">증빙 보관</span><input class="evidence-date" type="date" aria-label="송금 확인일"></article>
+      </div>
+    </section>
+
+    <section id="balance" class="check-stage">
+      <div class="stage-title"><span>03</span><div><h2>잔금일 잠금모드</h2><p>오래전에 확인한 서류가 아니라 송금 직전 상태를 다시 봅니다.</p></div></div>
+      <div class="balance-alert"><strong>세 항목이 모두 끝나기 전에는 잔금을 보내지 마세요.</strong><span>새 근저당이나 소유권 변동은 계약 후에도 생길 수 있습니다. 잔금·전입신고 당일에 설정되는 근저당을 막으려면 ‘잔금 다음 날까지 신규 권리설정 금지’ 특약을 함께 넣으세요.</span></div>
+      <div class="check-items">
+        <article class="check-item critical" data-key="day_registry"><input type="checkbox" id="ck-day-registry"><label for="ck-day-registry"><b>잔금 송금 직전 등기부를 다시 열람했다</b><span>새 압류·가압류·근저당·소유권 변동이 없는지 확인</span></label><a href="https://www.iros.go.kr/" target="_blank" rel="noopener">인터넷등기소 ↗</a><input class="evidence-date" type="date" aria-label="잔금일 등기 확인일"></article>
+        <article class="check-item critical" data-key="day_cancel"><input type="checkbox" id="ck-day-cancel"><label for="ck-day-cancel"><b>약정한 근저당 말소·감액 절차를 확인했다</b><span>잔금과 말소의 실행 순서, 접수증 수령 방법까지 확인</span></label><span class="manual-badge">동시이행 확인</span><input class="evidence-date" type="date" aria-label="말소 확인일"></article>
+        <article class="check-item critical" data-key="day_identity"><input type="checkbox" id="ck-day-identity"><label for="ck-day-identity"><b>열쇠·점유 상태와 최종 입금 계좌를 재확인했다</b><span>계약 당사자와 계좌 명의가 같은지 마지막으로 확인</span></label><span class="manual-badge">현장 확인</span><input class="evidence-date" type="date" aria-label="현장 확인일"></article>
+      </div>
+    </section>
+
+    <section id="after" class="check-stage">
+      <div class="stage-title"><span>04</span><div><h2>입주 후 보호 완성</h2><p>계약서에 서명한 것으로 끝나지 않습니다.</p></div></div>
+      <div class="check-items">
+        <article class="check-item critical" data-key="move"><input type="checkbox" id="ck-move"><label for="ck-move"><b>입주 당일 인도·전입신고·확정일자를 모두 마쳤다</b><span>대항력은 신고가 늦어지는 만큼 늦게 생깁니다. 이사·전입신고·확정일자를 같은 날 끝내고 접수증을 보관하세요</span></label><a href="https://www.gov.kr/" target="_blank" rel="noopener">정부24 ↗</a><input class="evidence-date" type="date" aria-label="전입 확인일"></article>
+        <article class="check-item critical" data-key="guarantee_done"><input type="checkbox" id="ck-guarantee-done"><label for="ck-guarantee-done"><b>반환보증 가입을 실제로 완료하고 보증서를 보관했다</b><span>사전 가능 확인에서 멈추지 말고 가입 완료 상태까지 확인</span></label><a href="https://www.khug.or.kr/jeonse/index.jsp" target="_blank" rel="noopener">안심전세포털 ↗</a><input class="evidence-date" type="date" aria-label="보증 가입일"></article>
+      </div>
+    </section>
+  </div>
+</section>
+<p class="legal-note">이 체크리스트는 일반적 예방 절차를 정리한 참고 도구입니다. 주택 유형과 계약 조건에 따라 추가 확인이 필요하며 공식 기관·법률전문가의 최신 안내를 우선하세요. 특히 대항력 발생 시점(전입신고 다음 날 0시 → 신고 처리 시)에 관한 「주택임대차보호법」 개정이 추진·시행 단계에 있으므로, 계약 시점에 적용되는 규정은 국가법령정보센터에서 직접 확인하세요.</p>
+{% endblock %}
+{% block scripts %}<script src="/static/js/contract.js?v={{ ui_version }}"></script>{% endblock %}

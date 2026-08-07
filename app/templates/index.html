@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+{% endblock %}
+{% block content %}
+<section class="hero compact-hero seoul-hero">
+  <div>
+    <p class="eyebrow">SEOUL LEGAL-DONG RISK MAP</p>
+    <h1>서울 467개 법정동을<br>시장·건물·공식자료로 분석</h1>
+    <p>약 6년치 전 주택유형 실거래, 건축물대장, 개별주택가격, 자치구 공식 피해이력을 결합했습니다. 동별 공식 피해가 없는 곳은 피해 건수를 추정하지 않습니다.</p>
+    <div class="hero-tags"><span>2020.07~2026.07 실거래</span><span>아파트·빌라·다가구·오피스텔</span><span>공식자료 분리 표시</span></div>
+  </div>
+  <div class="search-box">
+    <label for="region-search">자치구·법정동 검색</label>
+    <div class="search-row">
+      <input id="region-search" placeholder="예: 화곡동, 신림동, 관악구">
+      <button id="search-button" type="button">검색</button>
+    </div>
+    <div id="search-result" class="search-result" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="metrics" aria-label="데이터 요약">
+  <article><span>분석 법정동</span><strong id="metric-dongs">-</strong><small>서울 전체</small></article>
+  <article><span>위험 이상</span><strong id="metric-high">-</strong><small>상대등급</small></article>
+  <article><span>고신뢰 결과</span><strong id="metric-confidence">-</strong><small>거래·건물 표본 충분</small></article>
+  <article><span>공식 자치구 가결</span><strong id="metric-official">-</strong><small>2023~2025 합계</small></article>
+</section>
+
+<section class="layout">
+  <div class="panel map-panel">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">RELATIVE RISK</p>
+        <h2>서울 법정동 시장·건물구조 상대위험</h2>
+        <p class="section-help">법정동을 클릭하면 핵심 수치가 나타납니다. 팝업의 ‘전세 위험 근거 자세히 보기’를 눌러 주변 동 비교와 상세 근거를 확인하세요.</p>
+      </div>
+      <div class="legend">
+        <span><i class="low"></i>안전</span><span><i class="caution"></i>주의</span>
+        <span><i class="high"></i>위험</span><span><i class="very-high"></i>매우 위험</span>
+        <span><i class="missing"></i>자료 부족</span>
+      </div>
+    </div>
+    <div id="map"></div>
+  </div>
+
+  <aside class="side-column">
+    <div class="panel map-guide-panel">
+      <div class="panel-head"><div><p class="eyebrow">HOW TO USE</p><h2>지도 이용 순서</h2></div></div>
+      <ol class="map-guide-steps">
+        <li><b>지역 선택</b><span>지도에서 확인하려는 법정동을 누릅니다.</span></li>
+        <li><b>핵심 수치 확인</b><span>팝업에서 전세 위험등급과 자료 신뢰도를 확인합니다.</span></li>
+        <li><b>주변 동 비교</b><span>‘전세 위험 근거 자세히 보기’를 눌러 상세 페이지로 이동합니다.</span></li>
+      </ol>
+    </div>
+    <div class="panel map-guide-panel">
+      <div class="panel-head"><div><p class="eyebrow">READ FIRST</p><h2>색상은 지역 비교용입니다</h2></div></div>
+      <p class="map-guide-note">지도 색상은 서울 법정동 사이의 시장·건물구조 상대위험입니다. 전세사기 발생확률이나 특정 매물의 계약 안전을 뜻하지 않습니다.</p>
+      <a class="text-link" href="/analysis">내 계약 안전진단 시작 →</a>
+    </div>
+  </aside>
+</section>
+
+<section class="panel scope-panel">
+  <div class="panel-head"><div><p class="eyebrow">THREE LAYERS</p><h2>한 점수로 섞지 않는 3단계 구조</h2></div></div>
+  <div class="scope-grid">
+    <article><strong>① 자치구 공식 피해이력</strong><p>서울 25개 자치구의 2023~2025년 공식 가결건수. 동에 임의 배분하지 않습니다.</p></article>
+    <article><strong>② 법정동 시장·건물 신호</strong><p>실거래·건축물대장·개별주택가격을 바탕으로 서울 안에서 상대 비교합니다.</p></article>
+    <article><strong>③ 개별 계약 위험</strong><p>보증금, 근저당, 선순위 보증금, 신탁, 보증가입 가능 여부를 별도로 확인합니다.</p></article>
+  </div>
+</section>
+
+{% include "partials/disclaimer.html" %}
+{% endblock %}
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/static/js/common.js?v={{ ui_version }}"></script>
+<script src="/static/js/map.js?v={{ ui_version }}"></script>
+{% endblock %}

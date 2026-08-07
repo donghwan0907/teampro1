@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+  <p class="eyebrow">ACTION GUIDE</p>
+  <h1>위험요인을 발견한 뒤 무엇을 해야 하나요?</h1>
+  <p>점수를 낮추는 것이 목적이 아니라, 계약 전에 회수 가능성과 권리관계를 검증하고 위험한 조건을 제거하는 것이 목적입니다.</p>
+</section>
+
+<section class="guide-timeline">
+  <article class="panel guide-step"><span>계약 전 1</span><h2>가격 검증</h2><ul><li>같은 건물 또는 유사 면적 최근 매매 실거래 확인</li><li>공시가격만으로 매매가를 단정하지 않기</li><li>전세가율이 높으면 보증금 조정 또는 다른 매물 비교</li></ul></article>
+  <article class="panel guide-step"><span>계약 전 2</span><h2>권리관계 확인</h2><ul><li>등기사항증명서 갑구·을구 확인</li><li>채권최고액, 압류, 가압류, 신탁등기 확인</li><li>다가구는 선순위 임차보증금 총액 확인</li></ul></article>
+  <article class="panel guide-step"><span>계약 전 3</span><h2>당사자·체납 확인</h2><ul><li>등기상 소유자와 계약 상대방 일치 확인</li><li>대리계약 시 위임장·인감증명·본인 확인</li><li>임대인 국세·지방세 관련 정보 확인</li></ul></article>
+  <article class="panel guide-step"><span>계약 전 4</span><h2>보증 사전심사</h2><ul><li>계약 전에 보증 가입 가능 여부와 한도 확인</li><li>가입 불가 사유가 가격인지 권리인지 구분</li><li>보증 가입을 조건으로 하는 특약 검토</li></ul></article>
+  <article class="panel guide-step"><span>계약·잔금</span><h2>특약과 당일 재확인</h2><ul><li>잔금 전 등기부 재열람</li><li>근저당 말소·감액 조건을 특약으로 구체화</li><li>소유권·권리 변동 시 계약 해제 및 반환 조건 명시</li></ul></article>
+  <article class="panel guide-step"><span>입주 후</span><h2>대항력·증빙 관리</h2><ul><li>전입신고와 확정일자 절차 신속 진행</li><li>계약서, 송금증, 확인설명서, 보증서 보관</li><li>이상 징후 발생 시 관련 기관과 전문가에게 조기 상담</li></ul></article>
+</section>
+
+<section class="panel stop-signals">
+  <div class="panel-head"><div><p class="eyebrow">STOP SIGNALS</p><h2>다음 상황이면 계약을 멈추고 재확인하세요</h2></div></div>
+  <div class="signal-grid">
+    <article><strong>신탁등기</strong><p>수탁자 권한과 동의가 명확하지 않음</p></article>
+    <article><strong>소유자 불일치</strong><p>대리권 서류와 본인 확인이 불충분함</p></article>
+    <article><strong>보증 가입 불가</strong><p>불가 사유를 확인하지 못함</p></article>
+    <article><strong>권리부담 과다</strong><p>보증금·담보·선순위 합계가 추정가에 근접함</p></article>
+    <article><strong>시세 근거 부족</strong><p>최근 유사 매매 거래가 거의 없음</p></article>
+    <article><strong>위반건축물</strong><p>위반사항과 대출·보증 제한을 확인하지 못함</p></article>
+  </div>
+</section>
+
+<a class="cta-panel" href="/analysis"><strong>후보 매물 정보를 가지고 계신가요?</strong><span>매물 위험 진단에서 확인 순서를 자동으로 만들어보세요 →</span></a>
+{% endblock %}

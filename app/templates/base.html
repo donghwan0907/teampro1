@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="전세계약 전 위험요인을 확인하고, 필요한 서류와 행동을 끝까지 관리하는 서울 전세안전 실행 도구">
+  <title>{{ page_title }} | {{ app_name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  {% block head %}{% endblock %}
+  <link rel="stylesheet" href="/static/css/style.css?v={{ ui_version }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">
+    <i class="brand-mark" aria-hidden="true"><span></span></i>
+    <span class="brand-copy"><strong>{{ app_name }}</strong><small>Safe Lease Action</small></span>
+  </a>
+  <nav class="nav" aria-label="주요 메뉴">
+    <a href="/" class="{% if active_page == 'home' %}active{% endif %}">홈</a>
+    <a href="/analysis" class="{% if active_page == 'analysis' %}active{% endif %}">안전진단</a>
+    <a href="/contract" class="{% if active_page == 'contract' %}active{% endif %}">실행 체크</a>
+    <a href="/map" class="{% if active_page == 'map' %}active{% endif %}">서울 참고지도</a>
+    <a href="/emergency" class="{% if active_page == 'emergency' %}active{% endif %}">긴급대응</a>
+  </nav>
+  <div class="header-actions">
+    <a class="header-account" id="header-account" href="/login">로그인</a>
+    <a class="header-cta" href="/analysis">계약 점검 시작</a>
+  </div>
+</header>
+<main class="page-shell">
+  {% block content %}{% endblock %}
+</main>
+<footer class="footer">
+  <div><strong>{{ app_name }}</strong><span>판정보다 행동을 남기는 전세안전 실행 도구</span></div>
+  <div class="footer-links"><a href="/map">동네 안전 비교</a><a href="/methodology">분석 기준</a><a href="/guide">계약 가이드</a><a href="/support">서울 지원</a></div>
+  <p>공공데이터와 사용자 입력을 바탕으로 한 참고용 도구이며 법률·감정평가·보증기관 심사 또는 특정 계약의 안전보증을 대신하지 않습니다.</p>
+</footer>
+<script src="/static/js/auth-widget.js?v={{ ui_version }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

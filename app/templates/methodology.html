@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+  <p class="eyebrow">SEOUL EXPLAINABLE METHODOLOGY</p>
+  <h1>서울 법정동 점수를 어떻게 만들었는지 공개합니다</h1>
+  <p>공식 동별 피해 전수집계가 없으므로 전세사기 확률을 만들지 않습니다. 시장·건물구조·자치구 공식 배경을 분리해 상대위험과 신뢰도를 함께 제공합니다.</p>
+</section>
+
+<section class="panel methodology-detail">
+  <div class="panel-head"><div><p class="eyebrow">CONTRACT DECISION V2</p><h2>개별 계약은 평균점수가 아니라 행동 우선순위로 판정합니다</h2></div></div>
+  <div class="comparison-grid">
+    <div class="bad-example"><strong>사용하지 않는 방식</strong><p>신탁등기나 소유자 불일치가 있어도 지역점수가 낮으면 평균점수가 낮아지는 방식</p></div>
+    <div class="good-example"><strong>현재 방식</strong><p>① 치명적 중단 조건 → ② 핵심자료 미확인 → ③ 주의 조건 → ④ 참고 위험부담 지수 순서로 판정</p></div>
+  </div>
+  <div class="formula large">가격 32% + 권리 38% + 건물 15% + 확인상태 10% + 지역 참고 5%</div>
+  <p class="warning-text">위 계산값은 사기 확률이 아닌 참고 위험부담 지수입니다. 신탁, 소유자 불일치, 위반건축물, 반환보증 불가, 과도한 선순위 권리는 지수와 별도로 중단 신호가 됩니다.</p>
+</section>
+
+<section class="method-grid">
+  <article class="panel method-card">
+    <span class="step-number">01</span>
+    <h2>시장 위험 60%</h2>
+    <p>2020년 7월~2026년 7월 서울 실거래 중 아파트·연립다세대·단독다가구·오피스텔의 매매와 순수전세를 사용합니다.</p>
+    <div class="formula">전세가율 = 유사 면적 전세 단가 ÷ 매매 단가 × 100</div>
+    <ul><li>전세가율 40%</li><li>80% 이상 비중 25%</li><li>매매가격 하락 15%</li><li>매매활동 감소 10%</li><li>비아파트 전세비중 10%</li></ul>
+  </article>
+  <article class="panel method-card">
+    <span class="step-number">02</span>
+    <h2>건물구조 위험 25%</h2>
+    <p>총괄표제부·표제부·전유부·층별개요를 결합해 법정동별 주택구조를 집계합니다.</p>
+    <div class="formula">건물구조 = 비아파트 + 노후도 + 혼합용도 + 세대/주차</div>
+    <ul><li>비아파트 건물 비중 40%</li><li>20년 이상 주거건물 25%</li><li>주거·상업 혼합용도 20%</li><li>세대 대비 주차부족 15%</li></ul>
+  </article>
+  <article class="panel method-card">
+    <span class="step-number">03</span>
+    <h2>자치구 공식 배경 15%</h2>
+    <p>서울 25개 자치구의 2023~2025년 공식 피해자 가결건수를 세대수로 보정하고, 업로드된 보증사고 자료를 보조지표로 사용합니다.</p>
+    <div class="formula">공식 배경 = 자치구 피해/1,000세대 + 보증사고율</div>
+    <p class="warning-text">자치구 수치를 동별 피해로 나누거나 추정하지 않습니다.</p>
+  </article>
+</section>
+
+<section class="panel methodology-detail">
+  <div class="panel-head"><div><p class="eyebrow">DATA LINKAGE</p><h2>이번 서울 버전에 결합한 자료</h2></div></div>
+  <div class="source-table-wrap">
+    <table class="source-table">
+      <thead><tr><th>자료</th><th>규모·기간</th><th>역할</th></tr></thead>
+      <tbody>
+        <tr><td>서울 전 주택유형 실거래</td><td>정제 1,969,987건 · 2020.07~2026.07</td><td>전세가율·가격·거래량</td></tr>
+        <tr><td>건축물대장</td><td>표제부 약 40.5만 건 + 보완, 층별 303만, 전유부 378만 행</td><td>주택유형·노후·혼합용도·가구구조</td></tr>
+        <tr><td>개별주택가격·좌표</td><td>각 약 29.3만 건</td><td>단독·다가구 가격과 지도 연결</td></tr>
+        <tr><td>서울 공식 피해자료</td><td>25개 자치구 2023~2025 합계 10,004건</td><td>자치구 배경</td></tr>
+        <tr><td>동 단위 공식 확인자료</td><td>화곡동 전체집계, 시흥동 특정 사건 등</td><td>집계범위·기준일을 별도 표시</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel methodology-detail">
+  <div class="panel-head"><div><p class="eyebrow">MISSING DATA RULE</p><h2>없는 자료를 0건이나 안전으로 처리하지 않습니다</h2></div></div>
+  <div class="comparison-grid">
+    <div class="bad-example"><strong>사용하지 않는 방식</strong><p>동별 피해자료 없음 → 피해 0건 처리 또는 자치구 피해를 동마다 배분</p></div>
+    <div class="good-example"><strong>현재 방식</strong><p>공식 피해는 자치구 배경으로 유지하고, 법정동은 실제 거래·건물 신호만 계산</p></div>
+  </div>
+  <div class="formula large">최종점수 = Σ(가용 지표 점수 × 기본가중치) ÷ Σ(가용 기본가중치)</div>
+</section>
+
+<section class="panel">
+  <div class="panel-head"><div><p class="eyebrow">CONFIDENCE</p><h2>점수보다 먼저 신뢰도를 확인하세요</h2></div></div>
+  <div class="confidence-grid">
+    <article><strong>높음</strong><p>매매·전세 각 100건 이상, 매칭 5개 이상, 주거건물 100개 이상</p></article>
+    <article><strong>보통</strong><p>매매·전세 각 30건 이상, 매칭 2개 이상, 주거건물 30개 이상</p></article>
+    <article><strong>낮음</strong><p>일부 자료는 있으나 직접 비교 표본이 부족함</p></article>
+    <article><strong>자료 부족</strong><p>핵심 거래·건물 자료가 충분하지 않음</p></article>
+  </div>
+</section>
+
+<section class="panel methodology-detail" id="evidence">
+  <div class="panel-head"><div><p class="eyebrow">ACADEMIC EVIDENCE</p><h2>각 지표를 왜 넣었는지: 근거 문헌</h2><p class="section-help">가중치 수치는 저희가 정했지만, 어떤 변수를 넣을지는 아래 국내 실증연구에서 유의하게 확인된 요인을 따랐습니다. 항목을 누르면 근거가 열립니다.</p></div></div>
+  <div class="evidence-accordion">
+    <details class="fold-item ev-item">
+      <summary>
+        <span class="fold-icon" aria-hidden="true"></span>
+        <span class="ev-head"><b>전세가율 40%</b><small>시장 위험의 최대 항목</small></span>
+        <span class="fold-cue">근거 보기</span>
+      </summary>
+      <div class="ev-body">
+        <p class="ev-cite">김진유(2022), 「고위험 전세와 전세보증금 미반환 위험의 상관관계 분석: 서울시 전세보증사고를 중심으로」 『부동산학연구』 28(4), 55–69.</p>
+        <p class="ev-find">서울 실거래와 HUG 대위변제 자료를 결합한 회귀분석에서 전세가율이 높은 지역에 전세사고가 밀집하고, 저가·다세대 밀집지역에서 미반환 사고가 잦음이 확인됨.</p>
+        <a class="ev-link" href="https://doi.org/10.19172/KREAA.28.4.4" target="_blank" rel="noopener">원문 확인 ↗</a>
+      </div>
+    </details>
+    <details class="fold-item ev-item">
+      <summary>
+        <span class="fold-icon" aria-hidden="true"></span>
+        <span class="ev-head"><b>80% 이상 비중 25% · 권리부담 합계 38%</b><small>권리부담 90%를 중단 신호로 쓰는 근거</small></span>
+        <span class="fold-cue">근거 보기</span>
+      </summary>
+      <div class="ev-body">
+        <p class="ev-cite">안선영·이상엽(2025), 「전세보증금 미반환에 영향을 미치는 주요요인 연구: 수도권지역 전세보증 사고를 중심으로」 『주택금융연구』 9(2), 47–68.</p>
+        <p class="ev-find">수도권 보증 453,122건 이항로짓 분석. (선순위채권+보증금)÷주택가격 기준 부채비율이 80%를 넘으면 사고 승산이 급증하고, <b>90% 이상 구간은 60% 미만 대비 승산 29.9배</b>.</p>
+        <a class="ev-link" href="https://doi.org/10.52344/hfr.2025.9.2.47" target="_blank" rel="noopener">원문 확인 ↗</a>
+      </div>
+    </details>
+    <details class="fold-item ev-item">
+      <summary>
+        <span class="fold-icon" aria-hidden="true"></span>
+        <span class="ev-head"><b>매매가격 하락 15% · 매매활동 감소 10%</b><small>가격이 빠지면 무슨 일이 생기는가</small></span>
+        <span class="fold-cue">근거 보기</span>
+      </summary>
+      <div class="ev-body">
+        <p class="ev-cite">박진백(2023), 『역전세 발생 추이와 보증금 미반환 위험 연구』 국토연구원 워킹페이퍼 WP 23-06.</p>
+        <p class="ev-find">직전 계약의 전세가율이 높을수록 차기 계약이 역전세가 될 확률이 상승하며, 전세가율 100% 초과 시 51.1%가 역전세로 이행. 역전세 1% 증가는 전세보증사고 0.297%, 임차권등기명령 0.431% 증가와 연관.</p>
+        <a class="ev-link" href="https://www.krihs.re.kr/gallery.es?mid=a10103090000&amp;act=view&amp;bid=0025&amp;list_no=30026" target="_blank" rel="noopener">원문 확인 ↗</a>
+      </div>
+    </details>
+    <details class="fold-item ev-item">
+      <summary>
+        <span class="fold-icon" aria-hidden="true"></span>
+        <span class="ev-head"><b>비아파트 건물 비중 40% · 비아파트 전세비중 10%</b><small>단독·다가구를 안전으로 처리하지 않는 이유</small></span>
+        <span class="fold-cue">근거 보기</span>
+      </summary>
+      <div class="ev-body">
+        <p class="ev-cite">안선영·이상엽(2025), 위 논문 &lt;표 10&gt; 이항로짓 결과.</p>
+        <p class="ev-find">아파트를 준거로 할 때 <b>연립·다세대 사고 승산 5.81배, 오피스텔 2.31배</b>로 유의. 단, 같은 연구에서 <b>단독·다가구는 오히려 음(−)</b>으로 나타났고 이는 보증 가입 심사요건에 따른 표본 편의로 해석됩니다.</p>
+        <a class="ev-link" href="https://doi.org/10.52344/hfr.2025.9.2.47" target="_blank" rel="noopener">원문 확인 ↗</a>
+      </div>
+    </details>
+    <details class="fold-item ev-item">
+      <summary>
+        <span class="fold-icon" aria-hidden="true"></span>
+        <span class="ev-head"><b>20년 이상 주거건물 25%</b><small>가격 검증 곤란성의 대리지표</small></span>
+        <span class="fold-cue">근거 보기</span>
+      </summary>
+      <div class="ev-body">
+        <p class="ev-cite">안선영·이상엽(2025), 위 논문 &lt;표 7&gt;.</p>
+        <p class="ev-find">시세가 형성되지 않아 공시가격·감정평가로 가격을 산정한 주택에서 사고율이 높게 나타남(공시가격 2.3%, 전문가 산정 더미 유의). 노후 비아파트일수록 시세 확인이 어렵다는 점을 반영.</p>
+        <a class="ev-link" href="https://doi.org/10.52344/hfr.2025.9.2.47" target="_blank" rel="noopener">원문 확인 ↗</a>
+      </div>
+    </details>
+    <details class="fold-item ev-item">
+      <summary>
+        <span class="fold-icon" aria-hidden="true"></span>
+        <span class="ev-head"><b>자치구 공식 배경 15%</b><small>동이 아니라 자치구 단위로만 사용</small></span>
+        <span class="fold-cue">근거 보기</span>
+      </summary>
+      <div class="ev-body">
+        <p class="ev-cite">오창섭·서정렬(2023), 「전세자금보증 사고 발생 특성에 관한 연구: 지역 및 가구 특성을 중심으로」 『지역개발연구』 / 민병철(2024), 「다주택자의 존재를 고려한 아파트 전세의 보증금 사고 위험 추정 연구」 『부동산분석』 10(2), 1–21.</p>
+        <p class="ev-find">사고율에 지역 간 유의한 차이가 존재함이 확인되어 지역 변수를 유지하되, 동 단위 전수자료가 없으므로 자치구 배경으로만 사용합니다. 임대인의 다주택 보유를 고려하지 않으면 위험이 과소평가된다는 결과에 따라 지역점수를 개별 계약 판정의 5%로만 반영합니다.</p>
+        <a class="ev-link" href="https://doi.org/10.30902/jrea.2024.10.2.1" target="_blank" rel="noopener">원문 확인 ↗</a>
+      </div>
+    </details>
+  </div>
+  <p class="warning-text">위 문헌들은 <b>어떤 변수가 사고와 관련 있는지</b>를 뒷받침할 뿐, 이 사이트의 가중치 수치(40%·25% 등)나 법정동 점수 자체를 검증한 것은 아닙니다. 문헌의 분석 단위는 보증 건·자치구·시도이며 법정동이 아닙니다.</p>
+</section>
+
+<section class="panel limitations">
+  <h2>해석 제한</h2>
+  <ul>
+    <li>동 점수는 실제 전세사기 발생률·확률이 아닙니다.</li>
+    <li>화곡동 407건은 신청 접수이며 피해자 가결건수와 다릅니다.</li>
+    <li>시흥동·양평동 등의 사건 수치는 해당 동 전체 합계가 아닙니다.</li>
+    <li>등기부, 근저당, 압류, 신탁, 선순위 임차보증금은 개별 매물 진단에서 확인해야 합니다.</li>
+    <li>출처 기준일이 확정되지 않은 서울_~1·~2·~4 자료는 서로 합산하지 않습니다.</li>
+  </ul>
+</section>
+{% endblock %}

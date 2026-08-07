@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading region-heading">
+  <a class="back-link" href="/map">← 서울 지도로 돌아가기</a>
+  <p class="eyebrow">LEGAL-DONG EXPLANATION</p>
+  <h1 id="region-name">법정동 상세 분석</h1>
+  <p id="region-subtitle">점수 구성과 데이터 신뢰도를 불러오는 중입니다.</p>
+</section>
+
+<div id="region-error" class="notice hidden"></div>
+<section id="region-content" class="hidden">
+  <section class="metrics region-metrics">
+    <article><span>시장·건물 상대점수</span><strong id="region-score">-</strong><small id="region-level">-</small></article>
+    <article><span>데이터 신뢰도</span><strong id="region-confidence">-</strong><small>표본과 결측 반영</small></article>
+    <article><span>추정 전세가율</span><strong id="region-ratio">-</strong><small>주택유형·면적대 매칭</small></article>
+    <article><span>매칭 그룹</span><strong id="region-groups">-</strong><small>최근 36개월</small></article>
+  </section>
+
+  <section class="panel region-neighbor-panel" aria-labelledby="region-neighbor-title">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">SELECTED VS NEARBY</p>
+        <h2 id="region-neighbor-title">선택한 동과 주변 동 안전 비교</h2>
+        <p class="section-help">선택한 법정동과 중심점 거리가 가까운 주변 법정동을 하나의 세로막대그래프로 비교합니다.</p>
+      </div>
+      <div id="region-neighbor-summary" class="neighbor-summary-badge">비교자료 불러오는 중…</div>
+    </div>
+    <figure class="neighbor-vertical-figure">
+      <div class="neighbor-chart-scale" aria-hidden="true"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div>
+      <div class="neighbor-vertical-scroll">
+        <div id="region-neighbor-chart" class="neighbor-vertical-chart" role="img" aria-label="선택한 법정동과 주변 법정동의 안전 참고점수 세로막대그래프">
+          <p class="chart-loading">주변 법정동을 비교하는 중…</p>
+        </div>
+      </div>
+      <figcaption id="region-neighbor-note">안전 참고점수는 100에서 상대위험 점수를 뺀 비교값이며, 전세사기 발생확률이나 개별 계약의 안전보증이 아닙니다.</figcaption>
+    </figure>
+  </section>
+
+  <section class="official-layout">
+    <article class="panel official-card">
+      <p class="eyebrow">DISTRICT OFFICIAL DATA</p>
+      <h2 id="official-district-title">자치구 공식 피해이력</h2>
+      <div id="official-district-data" class="official-stat-grid"></div>
+      <p class="small-note">자치구 수치는 이 법정동의 피해 건수가 아니며 배경정보로만 사용합니다.</p>
+    </article>
+    <article class="panel official-card">
+      <p class="eyebrow">DONG-LEVEL EVIDENCE</p>
+      <h2>동 단위 공식 확인자료</h2>
+      <div id="official-dong-evidence"></div>
+    </article>
+  </section>
+
+  <section class="region-layout">
+    <div class="panel">
+      <div class="panel-head"><div><p class="eyebrow">SCORE BREAKDOWN</p><h2>최종점수 구성</h2></div><a class="text-link" href="/methodology#evidence">점수 근거 문헌 →</a></div>
+      <div id="region-components" class="component-list"></div>
+      <div id="renormalize-note" class="info-box"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div><p class="eyebrow">NEXT ACTION</p><h2>이 법정동에서 필요한 확인</h2></div></div>
+      <div id="region-actions" class="action-list"></div>
+    </div>
+  </section>
+
+  <section class="panel raw-data-panel">
+    <div class="panel-head"><div><p class="eyebrow">SOURCE METRICS</p><h2>시장·건물·가격 원자료 요약</h2><p class="section-help">점수 계산에 실제로 들어간 값입니다. 필요할 때만 펼쳐 보세요.</p></div></div>
+    <details class="fold-item raw-fold">
+      <summary>
+        <span class="fold-icon" aria-hidden="true"></span>
+        <span class="raw-summary" id="region-raw-summary">원자료를 불러오는 중…</span>
+        <span class="fold-cue">전체 18개 항목</span>
+      </summary>
+      <dl id="region-raw" class="data-grid"></dl>
+    </details>
+  </section>
+
+  <section class="panel region-support-panel">
+    <div class="panel-head"><div><p class="eyebrow">SEOUL ACTION LINKS</p><h2>계약 전 보증·서울 지원 연결</h2><p class="section-help">보증상품과 지원사업은 조건에 따라 대상과 한도가 달라집니다. 내 조건으로 선별한 결과에서 확인하세요.</p></div><a class="text-link" href="/support">내 조건으로 다시 선별 →</a></div>
+  </section>
+</section>
+{% include "partials/disclaimer.html" %}
+{% endblock %}
+{% block scripts %}
+<script>window.SAFELEASE_REGION_CODE = {{ legal_dong_code|tojson }};</script>
+<script src="/static/js/common.js?v={{ ui_version }}"></script>
+<script src="/static/js/region.js?v={{ ui_version }}"></script>
+{% endblock %}

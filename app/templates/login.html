@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-copy">
+    <p class="eyebrow">SAVE YOUR CHECKLIST</p>
+    <h1>내 체크리스트를<br>안전하게 이어서 확인하세요.</h1>
+    <p>간단한 아이디 로그인으로 계약 단계별 확인 기록을 계정별로 안전하게 저장합니다. 이름·주소·주민번호는 받지 않습니다.</p>
+    <div class="auth-points">
+      <div><span>01</span><p><b>기기와 무관하게 저장</b><small>같은 서버에서 로그인하면 저장된 기록을 다시 불러옵니다.</small></p></div>
+      <div><span>02</span><p><b>비밀번호 원문 미저장</b><small>PBKDF2 방식의 단방향 해시만 데이터베이스에 보관합니다.</small></p></div>
+      <div><span>03</span><p><b>체크리스트만 보관</b><small>매물 상세주소나 개인정보는 입력받지 않습니다.</small></p></div>
+    </div>
+  </div>
+  <div class="auth-card">
+    <div class="auth-tabs" role="tablist">
+      <button type="button" class="active" data-mode="login">로그인</button>
+      <button type="button" data-mode="register">처음 가입</button>
+    </div>
+    <form id="auth-form">
+      <div class="auth-heading"><h2 id="auth-title">로그인</h2><p id="auth-help">저장해 둔 체크리스트를 불러옵니다.</p></div>
+      <label>아이디<input id="auth-username" autocomplete="username" maxlength="24" placeholder="한글·영문·숫자 3~24자" required></label>
+      <label>비밀번호<input id="auth-password" type="password" autocomplete="current-password" minlength="8" maxlength="72" placeholder="8자 이상" required></label>
+      <div id="auth-error" class="auth-error" aria-live="polite"></div>
+      <button class="primary-button auth-submit" type="submit">로그인하고 체크리스트 열기</button>
+    </form>
+    <a class="guest-link" href="/contract">로그인 없이 이 기기에만 저장하기 →</a>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/login.js?v={{ ui_version }}"></script>{% endblock %}

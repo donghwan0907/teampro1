@@ -1,0 +1,65 @@
+{
+  "transactions": {
+    "read_rows": 1969987,
+    "used_rows": 1969987,
+    "excluded_or_invalid_rows": null,
+    "cache_used": true,
+    "source": "서울 5년치정보임다ㅏ.zip",
+    "earliest_contract_ym": 202007,
+    "latest_contract_ym": 202607,
+    "housing_contract_counts": {
+      "단독다가구_jeonse": 201035,
+      "단독다가구_sale": 26502,
+      "아파트_jeonse": 647426,
+      "아파트_sale": 222681,
+      "연립다세대_jeonse": 433066,
+      "연립다세대_sale": 216630,
+      "오피스텔_jeonse": 144374,
+      "오피스텔_sale": 78273
+    },
+    "matched_groups": 5673
+  },
+  "buildings": {
+    "primary_source": "boss.zip",
+    "fallback_source": "전국_건축물대장_총괄표제부_2026-06.zip",
+    "files_read": 121,
+    "raw_rows_read": 3147703,
+    "fallback_rows_read": 614665,
+    "seoul_title_rows_after_dedup": 405445,
+    "primary_dongs": 205,
+    "fallback_dongs": 211,
+    "covered_dongs": 416,
+    "seoul_buildings": 410769
+  },
+  "building_details": {
+    "source": "서울시 건축물대장 전유부, 층별개요.zip",
+    "floor_rows_read": 3036415,
+    "registered_unit_rows": 3784016,
+    "unit_buildings": 3783999
+  },
+  "individual_prices": {
+    "source": "AL_D169_11_20260526.zip",
+    "rows": 293447,
+    "dongs": 413
+  },
+  "geocoded_prices": {
+    "source": "AL_D168_11_20260526.zip",
+    "geocoded_rows": 293322,
+    "dongs": 413
+  },
+  "official": {
+    "official_district_total": 10004,
+    "official_dong_evidence_rows": 4,
+    "district_household_source": "8번.zip 등록인구 2026년 2분기",
+    "guarantee_rows": 25,
+    "warning": "서울_~1·~2·~4는 업로드 원본명·기준일을 추가 확인해야 하므로 출처 상태를 화면에 표시합니다."
+  },
+  "result": {
+    "legal_dongs": 467,
+    "scored_dongs": 467,
+    "high_or_higher": 178,
+    "high_confidence": 164,
+    "official_dong_evidence_dongs": 2
+  },
+  "critical_disclaimer": "동별 공식 피해 전수집계가 없으므로 점수는 시장·건물구조 상대위험이며 실제 전세사기 발생확률이 아니다."
+}
